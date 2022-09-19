@@ -1,0 +1,22 @@
+
+
+body{
+    margin: 0;
+}
+
+nav{
+    background-color: aqua;
+    height: 200px;
+    position: relative;
+}
+
+li{
+    display:inline-block;
+    border: solid black 1px;
+
+}
+
+#profile{
+    position: absolute;
+    right: 0;
+}

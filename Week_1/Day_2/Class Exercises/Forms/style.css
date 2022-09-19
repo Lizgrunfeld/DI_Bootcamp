@@ -1,0 +1,10 @@
+
+
+input[type=checkbox]:checked +label{
+    background-color: aquamarine;
+
+}
+
+#fruit option[value="grapes"]{
+    background-color: yellow;
+}

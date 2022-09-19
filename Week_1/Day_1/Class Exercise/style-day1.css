@@ -1,0 +1,20 @@
+p{
+    background-color: violet;
+}
+
+#para{
+    font-size: 200px;
+}
+
+section > p{
+    text-align: center;
+}
+
+h1 + p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body p{
+    font-weight: bold;
+}
+

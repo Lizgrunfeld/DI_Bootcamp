@@ -1,0 +1,29 @@
+img.demonstration {
+    margin: auto;
+    width : 400px;
+}
+
+h1 {
+    text-align: center
+}
+
+/* lesson */
+
+.specific {
+    background-color: pink;
+    border: 2px solid blue;
+    margin: 10px 30px;
+    padding: 20px;
+    width: 200px;
+    display: inline-block
+}
+
+/* a span by default is inline */
+span {
+    background-color: yellow;
+}
+
+.box{
+    box-sizing: border-box;
+}
+

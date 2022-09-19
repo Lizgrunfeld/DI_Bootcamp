@@ -1,0 +1,52 @@
+/* Selector {
+    Property:value;
+ } */
+
+*{
+   text-align: right;
+}
+
+ body{
+background-image: url(backgroundimage3.jpg);
+background-size:cover ;
+ }
+
+
+ h2, p {
+    color: #a05639;;
+    text-align: center;
+    border: 5px solid #903815;
+    cursor: pointer;
+    
+ }
+
+ p {
+  line-height: 20px;
+  font-style: italic;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 70%
+;
+ }
+
+ li{
+   list-style: none;
+   display: inline-block;
+ }
+
+ .webtext{
+   border: 5px dashed #C79885 ;
+ }
+
+ .webtext1{
+   border: 5px solid #A05639;
+ }
+
+ #div1{
+   background-color: rgba(199, 152, 133, 0.2);
+ }
+
+ #div2{
+   background-color: rgba(222, 192, 180, 0.2);
+
+ }
