@@ -1,0 +1,18 @@
+body{
+    border: 5px solid blue;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+
+}
+.sidebar{
+    border: 2px solid black;
+    width: 85vw;
+}
+
+.cv{
+    border: 2px solid red;
+}
+
+.bio{
+    border: 2px solid green;
+}
