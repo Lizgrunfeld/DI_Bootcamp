@@ -1,0 +1,15 @@
+.wrapper {
+    background-color: aqua;
+}
+
+.container-fluid{
+    border: 2px solid black;
+}
+
+.row{
+    border: 2px solid red;
+}
+
+.col-md-4,.col-md-3 {
+    border: 2px solid blue;
+}

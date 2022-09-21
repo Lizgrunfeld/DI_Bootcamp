@@ -1,0 +1,31 @@
+
+section{
+    display: grid;
+    grid-template-rows: repeat(4,2fr);
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px 20px;
+    padding: 20px;
+}
+
+.box{
+    height: 100px;
+    border: 1px solid black;
+}
+
+.red{
+    background-color: rgba(195, 72, 72, 0.736);
+
+}
+
+.blue{
+    background-color: rgba(101, 133, 240, 0.839);
+    
+
+}
+
+.yellow{
+    background-color: rgba(251, 232, 84, 0.753);
+
+    grid-column: 1 / span 2;
+
+}

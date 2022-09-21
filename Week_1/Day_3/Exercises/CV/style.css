@@ -6,7 +6,20 @@ body{
 }
 .sidebar{
     border: 2px solid black;
-    width: 85vw;
+    width: 100vw;
+}
+
+#bio_sidebar{
+    border: 2px solid yellow; 
+}
+
+#facts_sidebar{
+    border: 2px solid yellow; 
+}
+
+#icons{
+    border: 2px solid yellow; 
+
 }
 
 .cv{
@@ -16,3 +29,14 @@ body{
 .bio{
     border: 2px solid green;
 }
+
+
+/* make it so the sidebar doesnt take up too much 
+room on phone 
+@media all and (min-width: 768px) { 
+}
+.sidebar {
+    border: 2px solid black;
+    width: 87vw;
+}
+*/

@@ -1,0 +1,33 @@
+/*
+.container{
+    border: 2px solid blue;
+    width: 100%;
+    padding: 10px;
+}
+
+.col{
+    border: 2px solid red;
+}
+
+.co
+l-md-4{
+    border: 2px solid yellow;
+}
+
+
+
+.container.text-left{
+    padding-top: 100px;
+}
+
+
+ try to find a way when pixels go MD or lower padding is added around heading boxes
+@include media-breakpoint-up(sm) {
+      
+ }
+*/
+
+ .col-md-4{
+    padding: 15px;
+
+ }
