@@ -1,0 +1,15 @@
+.card{
+    background-color: rgb(225, 225, 225);
+    color: grey;
+}
+
+.btn{
+    background-color: rgb(47, 64, 221);
+    color: white;
+    border-color: rgb(47, 64, 221);
+}
+
+.chart{
+    font-weight: bold;
+    font-size: 28px;
+}
