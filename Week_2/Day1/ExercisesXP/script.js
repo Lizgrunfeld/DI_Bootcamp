@@ -1,5 +1,9 @@
 
 // Exercise 1
+//Store your favorite food into a variable.
+//Store your favorite meal of the day into a variable (ie. breakfast, lunch or dinner)
+//Console.log I eat <favorite food> at every <favorite meal>
+
 const favoriteFood = "pizza";
 const favoriteMeal = "dinner";
 
@@ -8,6 +12,14 @@ console.log(sentence);
 
 
 //Exercise 2 - part I
+//Using this array : const myWatchedSeries = ["black mirror", "money heist", "the big bang theory"];
+//1.Create a variable named myWatchedSeriesLength that is equal to the number of series in the myWatchedSeries array.
+//2.Create a variable named myWatchedSeriesSentence, that is equal to a sentence describing the series you watched
+//For example : black mirror, money heist, and the big bang theory
+//3.Console.log a sentence using both of the variables created above
+//For example : I watched 3 series : black mirror, money heist, and the big bang theory
+
+
 let myWatchedSeries = ["Black Mirror", "Money Heist", "the big bang theory"];
 myWatchedSeries[2] = " and the Big Bang Theory"
 let myWatchedSeriesLength = 3;
@@ -16,6 +28,13 @@ const myWatchedSeriesSentence = `I watched ${myWatchedSeriesLength} series : ${m
 console.log(myWatchedSeriesSentence);
 
 //Exercise - part II
+//1.Change the series “the big bang theory” to “friends”. Hint : You will need to use the index of “the big bang theory” series.
+//2.Add, at the end of the array, the name of another series you watched.
+//3.Add, at the beginning of the array, the name of your favorite series.
+//4.Delete the series “black mirror”.
+//5.Console.log the third letter of the series “money heist”.
+//6.Finally, console.log the myWatchedSeries array, to see all the modifications you’ve made.
+
 
 let myWatchedSeries1 = [" Black Mirror", " Money Heist", " the big bang theory"];
 myWatchedSeries1[2] = " Friends";
@@ -31,6 +50,10 @@ console.log(myWatchedSeriesSentence1);
 
 
 //Exercise 3
+//1.Store a celsius temperature into a variable.
+//2.Convert it to fahrenheit and console.log <temperature>°C is <temperature>°F.
+//Hint : Should you create another variable to hold the temperature in fahrenheit? (ie. point 2)
+//Hint: To convert a temperature from celsius to fahrenheit : Divide it by 5, then multiply it by 9, then add 32
 
 const tempC = prompt("what temperature in Celcius do you want to convert?");
 //const tempC = 12;
@@ -39,7 +62,8 @@ const tempF = tempC/5*9+32;
 console.log(tempF);
 
 
-///////Exercise 4
+//Exercise 4
+//Guess The Answers #1
 // let c;
 // let a = 34;
 // let b = 21;
@@ -55,7 +79,8 @@ console.log(tempF);
 // Actual: 23
 
 
-/////////Exercise 5
+//Exercise 5
+//Guess The Answers #2
 
 //typeof(15)
 // Prediction: Number
@@ -122,7 +147,8 @@ console.log(tempF);
 // Prediction false
 // Actual: false
 
-//////////Exercise 6
+//Exercise 6
+//Guess The Answers #3
 
 //5 + "34"
 // Prediction:534
