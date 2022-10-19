@@ -42,10 +42,7 @@ myWatchedSeries1.push(" and The House of the Dragon");
 myWatchedSeries1.splice(0,0, "The Handmaid's Tale");
 let myWatchedSeriesLength1 = 4;
 
-let array1 = myWatchedSeries1.splice(0,1);
-let array2 = myWatchedSeries1.splice(1);
-
-myWatchedSeries1 = array1.concat(array2)
+myWatchedSeries1.splice(1,1);
 
 
 const myWatchedSeriesSentence1 = `I watched ${myWatchedSeriesLength1} series : ${myWatchedSeries1}`;
