@@ -176,8 +176,8 @@ console.log(sentence1);
 const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
 
 function getFirstLetters(names) {
-    const firstLetters = names.split()
-    .map(word => word[0]);
-    .join("");
+    const firstLetters = names.split();
+    firstLetters.map(names => names[0]);
+    firstLetters.join("");
 }
-return getFirstLetters
+return FirstLetters
