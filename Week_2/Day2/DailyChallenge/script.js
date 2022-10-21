@@ -21,7 +21,8 @@
 // --> the result is : 'This dinner is bad !'
 
 // const sentence = "The movie is not that bad, I like it"
-
+// let wordNot = sentense.indexof("not");
+// let wordBad = sentense.indexof("bad");
 // const wordNot = sentence.substr(13,3);
 // const wordBad = sentence.substr(22,3);
 
