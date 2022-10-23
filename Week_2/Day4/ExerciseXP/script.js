@@ -1,31 +1,30 @@
 // // 🌟 Exercise 1 : Information
 // // Instructions
 // // Part I : function with no parameters
-
 // // Create a function called infoAboutMe() that takes no parameter.
 // // The function should console.log a sentence about you (ie. your name, age, hobbies ect…).
 // // Call the function.
 
-// function infoAboutMe(){
-//     console.log(`My name is Elizabeth, I am 34 years old and I live in Givatayim`);
-// }
+function infoAboutMe(){
+    console.log(`My name is Elizabeth, I am 34 years old and I live in Givatayim`);
+}
 
-// infoAboutMe();
+infoAboutMe();
 
-// // Part II : function with three parameters
+// Part II : function with three parameters
 
-// // Create a function called infoAboutPerson(personName, personAge, personFavoriteColor) that takes 3 parameters.
-// // The function should console.log a sentence about the person (ie. “You name is …, you are .. years old, your favorite color is …”)
-// // Call the function twice with the following arguments:
-// // infoAboutPerson("David", 45, "blue")
-// // infoAboutPerson("Josh", 12, "yellow")
-
-// function infoAboutPerson(personName, personAge, personFavoriteColor){
-//     console.log(`Your name is ${personName}, You are ${personAge} and you love the color ${personFavoriteColor}`)
-// }
-
+// Create a function called infoAboutPerson(personName, personAge, personFavoriteColor) that takes 3 parameters.
+// The function should console.log a sentence about the person (ie. “You name is …, you are .. years old, your favorite color is …”)
+// Call the function twice with the following arguments:
 // infoAboutPerson("David", 45, "blue")
 // infoAboutPerson("Josh", 12, "yellow")
+
+function infoAboutPerson(personName, personAge, personFavoriteColor){
+    console.log(`Your name is ${personName}, You are ${personAge} and you love the color ${personFavoriteColor}`)
+}
+
+infoAboutPerson("David", 45, "blue")
+infoAboutPerson("Josh", 12, "yellow")
 
 // // //🌟 Exercise 2 : Tips
 // // Instructions
@@ -34,23 +33,23 @@
 // // Create a function named calculateTip() that takes no parameter.
 // // Inside the function, use prompt to ask John for the amount of the bill.
 
-// function calculateTip(){
-//     let billAmount = prompt("Please enter the bill amount");
+function calculateTip(){
+    let billAmount = prompt("Please enter the bill amount");
 
-//     if(billAmount >= 50){
-//         billAmount *= 1.20
-//     }
-//     else if (billAmount < 50 && billAmount > 200){
-//         billAmount *= 1.15
-//     }
-//     else if (billAmount <=200){
-//         billAmount *= 1.10
+    if(billAmount >= 50){
+        billAmount *= 1.20
+    }
+    else if (billAmount < 50 && billAmount > 200){
+        billAmount *= 1.15
+    }
+    else if (billAmount <=200){
+        billAmount *= 1.10
 
-//          }
-// console.log(billAmount)
-// }
+         }
+console.log(billAmount)
+}
 
-// calculateTip()
+calculateTip()
 
 // // Here are the rules
 // // If the bill is less than $50, tip 20%.
@@ -72,18 +71,18 @@
 // // 391 414 437 460 483
 // // Sum : 5313
 
-// function isDivisible(){
-//     let sum = 0
-//     for (i =0; i <500; i++){
-//     if (i % 23 === 0){
-//         console.log(i)
-//         sum = sum + i
-//     }
-//     }
-//     console.log(`The sum of all the numbers is ${sum}`)
-// }
+function isDivisible(){
+    let sum = 0
+    for (i =0; i <500; i++){
+    if (i % 23 === 0){
+        console.log(i)
+        sum = sum + i
+    }
+    }
+    console.log(`The sum of all the numbers is ${sum}`)
+}
 
-// isDivisible()
+isDivisible()
 
 
 
@@ -95,23 +94,6 @@
 
 // // 🌟 Exercise 4 : Shopping List
 // // Instructions
-// // const stock = { 
-// //     "banana": 6, 
-// //     "apple": 0,
-// //     "pear": 12,
-// //     "orange": 32,
-// //     "blueberry":1
-// // }  
-
-// // const prices = {    
-// //     "banana": 4, 
-// //     "apple": 2, 
-// //     "pear": 1,
-// //     "orange": 1.5,
-// //     "blueberry":10
-// // } 
-// // Add the stock and prices objects to your js file.
-
 // const stock = { 
 //     "banana": 6, 
 //     "apple": 0,
@@ -127,9 +109,26 @@
 //     "orange": 1.5,
 //     "blueberry":10
 // } 
+// // Add the stock and prices objects to your js file.
+
+const stock = { 
+    "banana": 6, 
+    "apple": 0,
+    "pear": 12,
+    "orange": 32,
+    "blueberry":1
+}  
+
+const prices = {    
+    "banana": 4, 
+    "apple": 2, 
+    "pear": 1,
+    "orange": 1.5,
+    "blueberry":10
+} 
 // // Create an array called shoppingList with the following items: “banana”, “orange”, and “apple”. It means that you have 1 banana, 1 orange and 1 apple in your cart.
 
-// const shoppingList = ["banana", "orange", "apple"]
+const shoppingList = ["banana", "orange", "apple"]
 
 // Create a function called myBill() that takes no parameters.
 // The function should return the total price of your shoppingList. In order to do this you must follow these rules:
@@ -140,25 +139,25 @@
 
 // Bonus: If the item is in stock, decrease the item’s stock by 1
 
-// function myBill(){
-//     // const item = shoppingList[0]
-//     for (const item of shoppingList){
-//     const quantityInStock = stock[item]
+function myBill(){
+    // const item = shoppingList[0]
+    for (const item of shoppingList){
+    const quantityInStock = stock[item]
 
-//     if (quantityInStock > 0){
-//         const price = prices[item]
-//         console.log(`the price of ${item} is ${price}`)
-//         console.log(`and we have this many in stock`,stock[item])
-//         stock[item] -= 1
-//         console.log(`the new quantity of ${item} in stock is`,stock[item])
+    if (quantityInStock > 0){
+        const price = prices[item]
+        console.log(`the price of ${item} is ${price}`)
+        console.log(`and we have this many in stock`,stock[item])
+        stock[item] -= 1
+        console.log(`the new quantity of ${item} in stock is`,stock[item])
 
 
-//     } else{
-//         console.log(`There is no ${item} in stock`)
-//     }
-// }
-// }
-// myBill()
+    } else{
+        console.log(`There is no ${item} in stock`)
+    }
+}
+}
+myBill()
 
 
 
@@ -181,41 +180,41 @@
 //     // }
 //     // }
 
-//     function changeEnough(itemPrice1,amountOfChange){
+    function changeEnough(itemPrice1,amountOfChange){
              
-//         const sum = totalAmount(amountOfChange)
-//         if (sum > itemPrice1){
-//             console.log("you can afford it")
-//             return true
-//         } else {
-//             console.log("you can not afford it")
-//             return false
-//         }
-//     }
+        const sum = totalAmount(amountOfChange)
+        if (sum > itemPrice1){
+            console.log("you can afford it")
+            return true
+        } else {
+            console.log("you can not afford it")
+            return false
+        }
+    }
 
 
-//     function totalAmount(arr) {
-//         let sum = 0
+    function totalAmount(arr) {
+        let sum = 0
 
-//         // Problem with arr.length below
-//         for (let i = 0; i < arr.length; i++){
-//           let coinValue
-//           const numberOfCoins = arr[i]
-//           if (i === 0){coinValue = 0.25 }
-//           if (i === 1){coinValue = 0.10 }
-//           if (i === 2){coinValue = 0.05 }
-//           if (i === 3){coinValue = 0.01 }
-//           console.log (`we have ${numberOfCoins} coins that have a value of`, coinValue)
+        // Problem with arr.length below
+        for (let i = 0; i < arr.length; i++){
+          let coinValue
+          const numberOfCoins = arr[i]
+          if (i === 0){coinValue = 0.25 }
+          if (i === 1){coinValue = 0.10 }
+          if (i === 2){coinValue = 0.05 }
+          if (i === 3){coinValue = 0.01 }
+          console.log (`we have ${numberOfCoins} coins that have a value of`, coinValue)
 
-//           sum = sum + numberOfCoins * coinValue
-//         }
-// console.log(`you own ${sum}`)
+          sum = sum + numberOfCoins * coinValue
+        }
+console.log(`you own ${sum}`)
 
-//         return sum
-//     }
+        return sum
+    }
 
 
-// totalAmount(4.25[25, 20, 5, 0])
+totalAmount(4.25[25, 20, 5, 0])
 
 // an item price
 // and an array representing the amount of change in your pocket.
@@ -271,7 +270,6 @@
 
 
 function hotelCost(numNights){
-   
     
     const costPerNight = 140
     const totalPrice = Number(numNights) * costPerNight
