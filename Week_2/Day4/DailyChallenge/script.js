@@ -71,7 +71,8 @@
 
 
 const answer = prompt("Please enter five words for a test and seperate each word with a comma:").split(",")
-const words= answer.split(",");
+let words = answer.split();
+// const words= answer.split(","); //Problem with split
 
 
 function findLongestWord(){

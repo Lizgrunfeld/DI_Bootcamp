@@ -162,8 +162,11 @@ const details = {
   is: 'Rudolf',
   the: 'raindeer'
 }
+
+// key = my, is, the
+// details[key] = name, rudolf, raindeer
 // Given the object above and using a for loop, console.log “my name is Rudolf the raindeer”
-let sentence1 = details.key + "" + key;
+let sentence1 += key + "" + details[key];
 console.log(sentence1);
 
 // Exercise 7 : Secret Group
@@ -173,11 +176,32 @@ console.log(sentence1);
 // Hint: a string is an array of letters
 // Console.log the name of their secret society. The output should be “ABJKPS”
 
-const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
 
-function getFirstLetters(names) {
-    const firstLetters = names.split();
-    firstLetters.map(names => names[0]);
-    firstLetters.join("");
+function findSecretSociety(){
+const students = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
+students.sort()
+
+
+let secretSociety = "";
+
+
+for (let user of students){
+    const firstL = user.charAt(0);
+    secretSociety = secretSociety+firstL
 }
-return FirstLetters
+
+console.log(SecretSociety)
+}
+
+findSecretSociety()
+
+
+// FOR NOW NOTES - SOLUTION
+// const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
+
+// function getFirstLetters(names) {
+//     const firstLetters = names.split();
+//     firstLetters.map(names => names[0]);
+//     firstLetters.join("");
+// }
+// return FirstLetters
