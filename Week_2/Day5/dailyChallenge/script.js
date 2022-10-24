@@ -1,6 +1,48 @@
-function song(){
+
 let answer = Number(prompt("Please enter a number:"));
+const makeSong = song(answer);
+let j = 0;
 let calAnswer = answer - j;
+
+function song(answer){
+
+console.log("is this number more than one?", isplural(answer));
+
+function whichWord(){
+
+    const sentenceSingle =`${answer} bottles of beer on the wall
+    ${answer} bottles of beer
+     take ${j} down and pass it around
+    ${calAnsweranswer}bottles of beer`
+    return sentenceSingle;
+
+
+    const sentencePlural =`${answer} bottles of beer on the wall
+    ${answer} bottles of beer
+     take ${j} down and pass them around
+    ${calAnswer}bottles of beer`;
+
+    return sentencePlural;
+
+}
+
+function isplural(){
+    if (answer> 1){
+        return true;
+} else{
+       return false;
+}
+
+function displaySong(){
+    if (isplural == false){
+    console.log(sentenceSingle);}
+    else{
+        console.log(sentencePlural);
+    }
+
+}
+
+}
 
 function countdownBeg(){
     let i = answer;
@@ -13,7 +55,6 @@ function countdownBeg(){
 
 
 function countup(){
-    let j = 0
     for (let j = 0; j <= 100 ; j++)
     do{
          console.log(`take ${j} down and pass it round`);
@@ -24,12 +65,7 @@ function countup(){
     return countup;
 
 
-function sentence(){
-    console.log(`${answer} bottles of beer on the wall`)
-    console.log(`${answer} bottles of beer`)
-    console.log(`take ${j} down and pass it around`)
-    console.log(`${calAnswer}bottles of beer`)
-}
 }
 
-song()
+
+console.log(displaySong)
