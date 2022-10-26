@@ -82,22 +82,22 @@
 
 // In the <div>, change the value of the id attribute from navBar to socialNetworkNavigation, using the setAttribute method.
 
-// let div = document.getElementById("navBar")
-// div.setAttribute("id", "socialNetworkNavigation")
-// console.log(div)
+let div = document.getElementById("navBar")
+div.setAttribute("id", "socialNetworkNavigation")
+console.log(div)
 
 
 // We are going to add a new <li> to the <ul>.
 
-// const myList = document.body.children[0].firstElementChild
-// // First, create a new <li> tag (use the createElement method).
-// const newLi = document.createElement("li");
-// // Create a new text node with “Logout” as its specified text.
-// let textNode = document.createTextNode("Logout");
-// // Append the text node to the newly created list node (<li>)
-// let completeLi = newLi.appendChild(textNode);
-// // Finally, append this updated list node to the unordered list (<ul>), using the appendChild method.
-// myList.appendChild(completeLi)
+const myList = document.body.children[0].firstElementChild
+// First, create a new <li> tag (use the createElement method).
+const newLi = document.createElement("li");
+// Create a new text node with “Logout” as its specified text.
+let textNode = document.createTextNode("Logout");
+// Append the text node to the newly created list node (<li>)
+let completeLi = newLi.appendChild(textNode);
+// Finally, append this updated list node to the unordered list (<ul>), using the appendChild method.
+myList.appendChild(completeLi)
 
 // Exercise 4 : My Book List
 //HTML TABLE!!!!
@@ -118,6 +118,7 @@
 
 
 const border = document.getElementById("table");
+// const borderAll = document.querySelectorAll("table.tr"); other option
 
 border.style.border ="solid 2px black";
 
@@ -185,7 +186,16 @@ let imageWidth = document.getElementsByName("img")
 
 
 // If the book is already read. Set the color of the book’s details to red.
+
+function turnRed(){
 if (alreadyRead == true){
-    
+    document.getElementById("details").lastElementChild.style.color = "red"
+
+    } else{
+        
+    }
+    turnRed()
+    }
 }
-}
+document.getElementById("details").lastElementChild.style.color = "red"
+console.log()
