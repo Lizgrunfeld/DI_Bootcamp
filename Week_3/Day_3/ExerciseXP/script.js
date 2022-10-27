@@ -56,16 +56,19 @@ function myMove(){
 let x = 0;
 setInterval(moveLeft,10)
 
+
 function moveLeft(){
     
      x+=10;
      let left = x +"px";
-     redBox.style.left = left
-     if (){
-     clearInterval()
-        }
+     redBox.style.left =left
+    //  clearInterval("350px")
+    //  stop box at 350px with clearInterval  or at end of containter
     }
-    // moveLeft()
+
+function stopMovement(){
+
+    }
 }
 
 
