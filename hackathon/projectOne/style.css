@@ -1,0 +1,72 @@
+html {
+    box-sizing: border-box;
+  }
+
+ main {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    
+  }
+  
+
+  #tilecontainer {
+    display: grid;
+    grid-template-rows: 200px 200px;
+    grid-template-columns: 200px 200px;
+    grid-gap: 25px;
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: 60px;
+
+  }
+
+header{
+    text-align: center;
+    font-size: 24px;
+}
+
+#button-info{
+    font: bold;
+    font-size: 28px;
+}
+
+footer{
+    position: absolute;
+    top: 85%;
+    left: 43%;
+}
+
+/* make tiles have nice borders with https://www.w3schools.com/css/css3_borders.asp */
+/* also make colors nicer than just red,blue ect */
+
+#tile-red{
+    background-color: red;
+}
+#tile-blue{
+    background-color: blue;
+}
+#tile-yellow{
+    background-color: yellow;
+}
+#tile-green{
+    background-color: green;
+}
+
+#lightUp{
+[data-color="red"]{
+    background-color: coral;
+    }
+[data-color="blue"]{
+    background-color: lightblue;
+    }
+[data-color="yellow"]{
+    background-color: rgb(189, 189, 127);
+    }
+[data-color="green"]{
+    background-color: lightgreen;
+    }
+}
+
+.hidden {
+    display: none}

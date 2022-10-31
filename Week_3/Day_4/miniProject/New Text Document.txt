@@ -1,0 +1,62 @@
+
+html
+section 1
+20% width
+button 100%
+button = clear grid back to white
+
+
+section 2
+80% width
+--------------------
+Javascript
+Create 21 colors 
+
+let coloredDiv = function createColorBox
+with loop running 21 times
+-create div
+-array of colors or google way to generate colors
+- use color as inline style
+	div.style.background = color from array
+-append divs to section 1 .appendchild
+
+div.addeventlistner ("click", retireveColor
+
+function retrieveColor(event){
+event.target to retrieve color clicked
+}
+
+---------------------
+
+CSS
+-set section 1 to be a grid
+-grid-template-rows: repeat (7,1fr)
+-grid-template-column: repeat (3,1fr)
+
+
+
+section 2
+
+-grid-template-rows: repeat (60,1fr)
+-grid-template-column: repeat (20,1fr)
+
+--------------------------------------
+Javasccript
+function createGrid
+with loop running x times
+-create div
+-append divs to section 2 .appendchild
+
+make clickable from retrieved color in event lisener
+
+-----------------------
+javascript eventListener
+
+addEventListener - inside the create ColorBox
+div.addeventlistner ("click", retireveColor)
+
+function retrieveColor(event){
+event.target to retrieve color clicked
+}
+
+- save retrieved color

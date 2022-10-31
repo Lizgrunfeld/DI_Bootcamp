@@ -68,6 +68,7 @@ function moveLeft(){
 
 function stopMovement(){
 
+
     }
 }
 

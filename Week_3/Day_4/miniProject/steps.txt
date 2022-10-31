@@ -1,0 +1,48 @@
+HTML
+- 2 sections - width 20% and the other one width 80%
+- section left: button Clear
+
+JS
+- Add the colored div
+  - JS file - create a function createColorBox
+  - loop 21 times
+  - create an element div
+  - array of colors 
+  - use the color as inline style
+      div.style.background = color from the array
+  - append the divs to the section from the html
+  - add classes
+  - addEventListener to each div 
+      div.addEventListener("click", retrieveColor)
+
+
+  - retrieveColor
+    - event.target to retrieve the color of the div
+    - save the color
+
+- clear button
+  - bring the grid back to white
+
+- combination of mouseover, mousedown, mouseup
+- boolean to check if the mousedown or mouseover
+element.addEventListener("mousedown", func)
+element.addEventListener("mouseover", func)
+
+
+- create the grid
+  - JS file - create a function createGrid
+  - loop xx times
+  - create an element div
+  - append the divs to the section from the html
+  - add classes
+  - event listener click, chenge the color of the div
+
+// how the thing will look
+CSS
+  - left section to be a grid
+  - grid-template-rows : repeat(7,1fr)
+  - grid-template-column : repeat(3,1fr)
+
+  - right section
+  - grid-template-rows : repeat(20,1fr)
+  - grid-template-column : repeat(60,1fr)
