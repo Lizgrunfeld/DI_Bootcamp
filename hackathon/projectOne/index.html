@@ -10,18 +10,19 @@
 </head>
 <body>
         <header>
-            <h1> Simon Game</h1>
+            <h1 class="heading jsheading"> Simon Game</h1>
+            <h1 class="gameLevel gameLevel hidden">Level</h1>
         </header>
    <main>     
-      <section id="tilecontainer">
-        <div class="tile" id="tile-red" data-color="red"></div>
-        <div class="tile" id="tile-yellow" data-color="yellow"></div>
-        <div class="tile" id="tile-green" data-color="green"></div>
-        <div class="tile" id="tile-blue" data-color="blue"></div>
+      <section class="tilecontainer jscontainer unclickable">
+        <div class="tile tile-red" data-color="red"></div>
+        <div class="tile tile-yellow" data-color="yellow"></div>
+        <div class="tile tile-green" data-color="green"></div>
+        <div class="tile tile-blue" data-color="blue"></div>
       </section>
    </main>
-    <footer>
-        <button id="start-button">Start</button>
+    <footer class ="infoSection">
+        <button id="start-button jsStart">Start</button>
         <div id="button-info" class="hidden"> hidden information</div>
     </footer>
 
