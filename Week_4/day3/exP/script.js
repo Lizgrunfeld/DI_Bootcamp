@@ -124,8 +124,7 @@ const users = [
 
             console.log("sentence",sentence)
 
-
-                // Exercise 4 : Employees #2
+         // Exercise 4 : Employees #2
         // Instructions
         // Using this object:
 
