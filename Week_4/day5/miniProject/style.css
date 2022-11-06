@@ -1,0 +1,58 @@
+body{
+    background-image: url(circuit-pattern.png);
+}
+
+header{
+    overflow: hidden;
+    height: 50vh;
+    width: 100%;
+    position:relative;
+    top: 0;
+    display: grid;
+    place-content: center;
+    background-color: #6ADF82;
+    font-family: 'SEGA LOGO FONT', sans-serif;
+}
+
+.gameName{
+    /* display: block; */
+    font-size: 72px;
+    /* margin-top: 100px;
+    margin-left: 52px; */
+}
+
+.robot-name{
+margin-left: 100px;}
+
+.robot-card{
+    width: 65%;
+    margin: 10px 5px 10px 5px ;
+    background-image: url(10674091_2.png);
+
+}
+
+.robot-img{
+position: relative;
+}
+
+section{
+    font-family: 'DK Woolwich', sans-serif;
+    display:grid;
+    align-self: center;
+    grid-template-columns: 4fr 4fr;
+  }
+
+
+
+#search{
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    margin-bottom: 52px;
+    font-size: 17px;
+  }
+
+  
+  
