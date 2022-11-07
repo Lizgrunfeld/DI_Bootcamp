@@ -1,0 +1,19 @@
+window.isCM8 = true;
+window.isAlertStrip = true;
+window.isInreadActive = false;
+window.isZoomActive = false;
+window.isEbayActive = true;
+window.isDashActive = true;
+window.isArtimediaActive = true;
+window.isBs = true;
+window.isLinicomActive = false;
+window.isSekindoActive = true;
+window.isVae = true;
+window.isPixelGroupActive = false;
+window.isBrowsiActive = true;
+window.isFBDesk12BeaconActive = true;
+// override native functionsn
+window.alert = function(a){window.console&&window.console.error(a)}
+
+window.isPrimeReportEnable = true;
+window.disableAutoplay = 5;

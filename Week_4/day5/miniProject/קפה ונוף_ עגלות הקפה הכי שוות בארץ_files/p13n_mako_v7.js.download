@@ -1,0 +1,792 @@
+var GDPRMsg=(function () {
+	if (location.hostname.indexOf("mobileapp") > -1)
+		return;
+	 document.addEventListener("DOMContentLoaded",function(){
+         init();
+     });
+	
+	function init(){
+		var msg = isMsgShowed();
+	    if (!msg) {
+	        var isAbrd = isAbroad();
+	        if (isAbrd == null) {
+	            setAbroad();
+	        }
+	        else if(parseInt(isAbrd)) {
+	        	loadGDPRMessage();
+	        }
+	    }
+	}
+    function setAbroad() {
+        fetch("https://mass.mako.co.il/ClicksStatistics/isAbroad.jsp").then(function (res) {
+            return res.text();
+        }).then(function (isAbroad) {
+            console.log("isAbroad: ", isAbroad);
+            sessionStorage.setItem('mako_is_abroad', isAbroad);
+            if (parseInt(isAbroad)) {
+            	loadGDPRMessage();
+            }
+        });
+    }
+    function isAbroad() {
+        return sessionStorage.getItem('mako_is_abroad');
+    }
+    function isMsgShowed() {
+        return localStorage.getItem('mako_GDPR_message_showed');
+    }
+    function setMsgShowed() {
+        localStorage.setItem('mako_GDPR_message_showed', 1);
+    }
+    function showSlide() {
+    	document.querySelector(".GDPR-Msg").classList.add("slideUpIn");
+    }
+    function buildSlide() {
+        var aside = document.createElement("aside");
+        aside.className = "GDPR-Msg";
+        var p = document.createElement("p");
+        var pText = document.createTextNode("בכך שאתה ממשיך לגלוש באתר הנך מסכים לשימוש שהאתר עושה ב- Cookies, על פי ");
+        p.appendChild(pText);
+        var a = document.createElement('a');
+        a.href = "/help-privacy-policy/Article-f6a1b75b8e66c11004.htm";
+        var linkText = document.createTextNode("מדיניות הפרטיות");
+        a.appendChild(linkText);
+        p.appendChild(a);
+        p.appendChild(document.createTextNode(" "));
+        a = document.createElement('a');
+        a.href = "/help-terms-of-use/Article-d37908dd1674c11006.htm";
+        linkText = document.createTextNode("ותנאי השימוש");
+        a.appendChild(linkText);
+        p.appendChild(a);
+        p.appendChild(document.createTextNode(" "));
+        pText = document.createTextNode("המעודכנים.");
+        p.appendChild(pText);
+        aside.appendChild(p);
+        var btn = document.createElement("a");
+        btn.className = "agreeBtn";
+        linkText = document.createTextNode("אישור");
+        btn.appendChild(linkText);
+        aside.appendChild(btn);
+        document.body.appendChild(aside);
+        btn.addEventListener("click", function () {
+            setMsgShowed();
+            document.querySelector(".GDPR-Msg").classList.remove("slideUpIn");
+        });
+    }
+    function loadGDPRMessage() {
+
+    	var style = document.createElement("link");
+    	style.rel="stylesheet";
+    	style.href="//rcs.mako.co.il/css/GDPRMsgStyle.css";
+        var header = document.getElementsByTagName("HEAD")[0];
+        header.appendChild(style);
+        style.addEventListener("load", function(){
+        	buildSlide();
+        	showSlide();
+        });
+    }
+})();
+var P13N = {};
+P13N.reordering = {};
+P13N.ab_testing = {};
+P13N.DAY = 24*60*60*1000;
+P13N.HOUR = 60*60*1000;
+P13N.ALGORITHM_VERSION = 24;
+P13N.MIN_TIME_FOR_LONG_IMPRESSION = 10;
+P13N.NUMBER_OF_DAYS_TO_SAVE_DATA = 90;
+P13N.MAX_NUMBER_OF_ITEMS_TO_SAVE = 50000;
+P13N.MIN_SCORE_FOR_REORDERING = 5;
+P13N.MIN_SCORE_FOR_REORDERING_PASSED = false;
+P13N.PAUSE_DAYS_BETWEEN_SCORE_CALCULATIONS = -1000;
+P13N.NUMBER_OF_DAYS_CONSIDERED_NEW_IMPRESSION = 30;
+P13N.CONTROL_GROUP_PROMIL = 100;
+P13N.REORDERING_GROUP_PROMIL = 900;
+var isInControlGroup = P13N.CONTROL_GROUP_PROMIL > localStorage.p13n_user_group;
+P13N.SESSION_TIME = 30*60*1000;
+
+P13N.FORMULA_MULTIPLIER_TOTAL_NUMBER_OF_VIEWS = 1;
+P13N.FORMULA_MULTIPLIER_LONG_VIEWS = 0;
+P13N.FORMULA_MULTIPLIER_OLD_VIEWS_PUNISHMENT = -1;
+
+var p13nurl = '';
+var p13nmatches = '';
+var p13ndomain = '';
+var p13nsubdomain = '';
+
+try {
+    p13nurl = window.location.href;
+    p13nmatches = p13nurl.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+    p13ndomain = p13nmatches && p13nmatches[1];
+    p13nsubdomain = p13ndomain.substr(0, p13ndomain.indexOf('.'));
+    /*eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){
+        while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){
+            return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}
+    ('c 2=4.e;7(2.8>b&&2.8>(2.6(\'.5\')+3)){4=4.9.a(2,2.d(0,2.6(\'.5\')+3))}f 7(!(2.6(\'.5\')+1)){4=4.9.a(2,\'i.g.h.5\')}',
+        19,19,'||n||location|il|indexOf|if|length|href|replace|23|var|substr|hostname|else|mako|co|www'.split('|'),0,{}));*/
+}
+catch(err) {
+
+}
+
+try {
+    if (!localStorage.p13n_user_group) {
+        localStorage.p13n_user_group = Math.floor(Math.random() * 1000);
+    }
+    localStorage.user_is_participating_in_p13n = (localStorage.p13n_user_group > P13N.CONTROL_GROUP_PROMIL && 
+                                                 localStorage.p13n_user_group < P13N.CONTROL_GROUP_PROMIL + P13N.REORDERING_GROUP_PROMIL) ? 1 : 0;
+}
+catch(err) {
+
+}
+
+var request = new XMLHttpRequest();
+request.open('GET', 'https://rcs.mako.co.il/js/p13n_data.json', false);
+request.send(null);
+
+if (request.status === 200) {
+    P13N.reordering.sections = JSON.parse(request.responseText);
+    //console.log(request.responseText);
+} else {
+    P13N.reordering.sections = [];
+}
+
+for(var i=0;i<P13N.reordering.sections.length; i++)
+{
+    var section = P13N.reordering.sections[i];
+    if(section.timeframe && section.pinned_to_position && section.pinned_to_position.hasOwnProperty(p13nsubdomain))
+    {
+        var fromDay = section.timeframe.fromDay;
+        var fromTime = section.timeframe.fromTime;
+        var toDay = section.timeframe.toDay;
+        var toTime = section.timeframe.toTime;
+        var pinned_to_position = section.pinned_to_position;
+
+        var now = new Date();
+        var day = now.getUTCDay();
+        var hour = now.getUTCHours();
+        var now_int = day * 100 + hour;
+        var from_int = fromDay * 100 + fromTime;
+        var to_int = toDay * 100 + toTime;
+        var isSectionActive = false;
+        if(to_int < from_int)
+        {
+            to_int += 700;
+            if(now_int < from_int)
+            {
+                now_int += 700;
+            }
+            if(	now_int >= from_int &&
+                now_int <= to_int	)
+            {
+                isSectionActive = true;
+            }
+        }
+        else
+        {
+            if(	now_int <= to_int &&
+                now_int >= from_int	)
+            {
+                isSectionActive = true;
+            }
+        }
+
+        if(isSectionActive)
+        {
+            // section is on - do nothing
+        }
+        else
+        {
+            for(var j=0;j<P13N.reordering.sections.length; j++) {
+                var otherSection = P13N.reordering.sections[j];
+                if(otherSection.pinned_to_position)
+                {
+                    for (var domain in pinned_to_position) {
+                        if (pinned_to_position.hasOwnProperty(domain) &&
+                            otherSection.pinned_to_position.hasOwnProperty(domain)) {
+                            if(otherSection.pinned_to_position[domain] > pinned_to_position[domain])
+                            {
+                                otherSection.pinned_to_position[domain] = otherSection.pinned_to_position[domain] - 1;
+                            }
+                        }
+                    }
+                }
+            }
+            delete section.pinned_to_position;
+        }
+    }
+}
+
+P13N.debug = function(message){
+
+};
+
+P13N.reordering.get_reporting_parameters = function(){
+    var section_location_array = [];
+
+    if(localStorage.section_order) {
+        var section_order = JSON.parse(localStorage.section_order);
+        for(var i=0; i<section_order.length; i++)
+        {
+            var section = section_order[i];
+            section_location_array.push(encodeURIComponent(section.name) + ':' + section.position);
+        }
+    }
+
+    var result = {
+        a_ver: P13N.ALGORITHM_VERSION,
+        is_p:(localStorage.user_is_participating_in_p13n == 1 || isInControlGroup)? 1 : 0,
+        cg_p:(isInControlGroup)? 1 : 0,
+        user_group:localStorage.p13n_user_group,
+        section_scores: encodeURIComponent(localStorage.section_scores),
+        order:section_location_array.join(",")
+    };
+    return JSON.stringify(result);
+};
+
+P13N.reordering.get_section_order = function(){
+    localStorage.user_is_participating_in_p13n_test_group = 0;
+    localStorage.user_is_participating_in_p13n_cg = (isInControlGroup)? 1:0;
+
+    var section_scores = P13N.reordering.get_section_scores();
+    var sorted_scores = [];
+    var pinned_sections = [];
+    var result = [];
+    var number_of_pinned_sections = 0;
+    var section = {};
+    var partner_section = {};
+    var partner_score = 0;
+    for (var section_name_in_section_scored in section_scores) {
+        section = P13N.reordering.getSection(section_name_in_section_scored);
+        if(section) {
+            partner_section = P13N.reordering.getSectionPinnedAfter(section.name);
+
+            if(section.pinned_to_position && section.pinned_to_position.hasOwnProperty(p13nsubdomain))
+            {
+
+            }
+            else
+            {
+                if(section.pinned_after_ordering && section.pinned_after_ordering.hasOwnProperty(p13nsubdomain))
+                {
+
+                }
+                else {
+                    if(partner_section)
+                    {
+                        sorted_scores.push(
+                            {
+                                name: section_name_in_section_scored,
+                                score: section_scores[section_name_in_section_scored] + section_scores[partner_section.name]
+                            }
+                        );
+                        sorted_scores.push(
+                            {
+                                name: partner_section.name,
+                                score: section_scores[section_name_in_section_scored] + section_scores[partner_section.name] + 0.5
+                            }
+                        );
+                    }
+                    else {
+                        sorted_scores.push(
+                            {
+                                name: section_name_in_section_scored,
+                                score: section_scores[section_name_in_section_scored]
+                            }
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    var placeholders_for_pinned_indexes = [];
+    var i = 0;
+    for (i=0; i < P13N.reordering.sections.length; i++) {
+        section = P13N.reordering.sections[i];
+        if(section && section.pinned_to_position && section.pinned_to_position.hasOwnProperty(p13nsubdomain))
+        {
+            number_of_pinned_sections++;
+            pinned_sections.push(section);
+            result.push({
+                position: section.pinned_to_position[p13nsubdomain],
+                name: section.name
+            });
+            placeholders_for_pinned_indexes[section.pinned_to_position[p13nsubdomain]] = 1;
+        }
+    }
+
+    sorted_scores.sort(function(a,b){return  b.score - a.score});
+    var score_index = 0;
+
+    for(i=0; i < number_of_pinned_sections + sorted_scores.length; i++)
+    {
+        if(placeholders_for_pinned_indexes[i])
+        {
+            continue;
+        }
+
+        if(sorted_scores[score_index])
+        {
+            result.push({
+                position: i,
+                name: sorted_scores[score_index].name
+            });
+        }
+        score_index++;
+    }
+
+    result.sort(function(a,b){return a.position - b.position});
+
+    P13N.debug(JSON.stringify(result));
+    localStorage.section_order = JSON.stringify(result);
+    if(isInControlGroup || localStorage.user_is_participating_in_p13n == 0)
+    {
+        return "[]";
+    }
+
+    return JSON.stringify(result);
+};
+
+P13N.reordering.getSectionPinnedAfter = function(section_name){
+    for (var i=0; i < P13N.reordering.sections.length; i++) {
+        section = P13N.reordering.sections[i];
+        if( section &&
+            section.pinned_after_ordering &&
+            section.pinned_after_ordering.hasOwnProperty(p13nsubdomain) &&
+            section.pinned_after_ordering[p13nsubdomain] === section_name)
+        {
+            return section;
+        }
+    }
+    return undefined;
+};
+
+P13N.reordering.getSectionPinnedBefore = function(section_name){
+    var section = P13N.reordering.getSection(section_name);
+    if(section && section.pinned_after_ordering &&
+        section.pinned_after_ordering.hasOwnProperty(p13nsubdomain)) {
+        var pinnedAfterName = section.pinned_after_ordering[p13nsubdomain];
+        return P13N.reordering.getSection(pinnedAfterName);
+    }
+    return undefined;
+};
+
+P13N.reordering.get_section_scores = function() {
+    var now = new Date().getTime();
+
+    var section_scores = {};
+    if(localStorage.section_scores)
+    {
+        section_scores = JSON.parse(localStorage.section_scores);
+        P13N.debug(JSON.stringify(localStorage.section_scores));
+        if(now < section_scores.creation_time + P13N.PAUSE_DAYS_BETWEEN_SCORE_CALCULATIONS * P13N.DAY)
+        {
+            P13N.debug("cached section scores are valid (less than " + P13N.PAUSE_DAYS_BETWEEN_SCORE_CALCULATIONS + " days old)");
+            return section_scores;
+        }
+    }
+
+    var impressions = (localStorage.impressions)? JSON.parse(localStorage.impressions) : [];
+    if(Object.prototype.toString.call(impressions) === '[object Array]')
+    {
+
+    }
+    else
+    {
+        impressions = JSON.parse(impressions);
+    }
+    var sorted_impressions = {};
+
+    for(var i=0; i<impressions.length; i++)
+    {
+        var impression_string = impressions[i];
+        var impression = P13N.reordering.Impression.fromString(impression_string);
+        if(!sorted_impressions[impression.section])
+        {
+            sorted_impressions[impression.section] = [];
+        }
+        sorted_impressions[impression.section].push(impression);
+    }
+
+    section_scores = {};
+    var scores_found = 0;
+    for (var section_name in sorted_impressions) {
+        if (sorted_impressions.hasOwnProperty(section_name)) {
+            var section = P13N.reordering.getSection(section_name);
+            var total_number_of_views = sorted_impressions[section_name].length;
+            var number_of_long_impressions = 0;
+            var number_of_new_impressions = 0;
+            for(var j=0; j<sorted_impressions[section_name].length; j++)
+            {
+                var impression = sorted_impressions[section_name][j];
+                if(impression.length_of_stay > P13N.MIN_TIME_FOR_LONG_IMPRESSION * 1000)
+                {
+                    number_of_long_impressions++;
+                }
+
+                if(impression.start_time > now - (P13N.NUMBER_OF_DAYS_CONSIDERED_NEW_IMPRESSION * P13N.DAY))
+                {
+                    number_of_new_impressions++;
+                }
+            }
+
+            var all_impressions_are_old = (number_of_new_impressions === 0);
+
+            var score = P13N.FORMULA_MULTIPLIER_TOTAL_NUMBER_OF_VIEWS * total_number_of_views +
+                P13N.FORMULA_MULTIPLIER_LONG_VIEWS * number_of_long_impressions +
+                P13N.FORMULA_MULTIPLIER_OLD_VIEWS_PUNISHMENT * ((all_impressions_are_old)? 1:0);
+
+            var partnerAddition = 0;
+            var partner_section = P13N.reordering.getSectionPinnedAfter(section_name);
+            if(partner_section){
+                if(sorted_impressions[partner_section.name]) {
+                    partnerAddition = sorted_impressions[partner_section.name].length;
+                }
+            }
+
+            var before_section = P13N.reordering.getSectionPinnedBefore(section_name);
+            if(before_section){
+                if(sorted_impressions[before_section.name]) {
+                    partnerAddition = sorted_impressions[before_section.name].length;
+                }
+            }
+
+            if(score + partnerAddition > P13N.MIN_SCORE_FOR_REORDERING ||
+                (section && section.pinned_to_position && section.pinned_to_position.hasOwnProperty(p13nsubdomain))) {
+                scores_found++;
+
+                if(score > P13N.MIN_SCORE_FOR_REORDERING){
+                    P13N.MIN_SCORE_FOR_REORDERING_PASSED = true;
+                }
+
+                section_scores[section_name] = score;
+            }
+        }
+    }
+    if(scores_found > 0) {
+        section_scores.creation_time = new Date().getTime();
+        localStorage.section_scores = JSON.stringify(section_scores);
+    }
+    if(!P13N.MIN_SCORE_FOR_REORDERING_PASSED) {
+        if (localStorage.user_is_participating_in_p13n == 1){
+            localStorage.user_is_participating_in_p13n = 0;
+        } else if (isInControlGroup){
+            isInControlGroup = false;
+        }
+    }
+
+    P13N.debug("section scores: " + JSON.stringify(section_scores));
+    return section_scores;
+};
+
+P13N.reordering.getUserPreferences = function(){
+    var impressions = (localStorage.impressions)? JSON.parse(localStorage.impressions) : [];
+    var sorted_impressions = {};
+
+    for(var i=0; i<impressions.length; i++)
+    {
+        var impression_string = impressions[i];
+        var impression = P13N.reordering.Impression.fromString(impression_string);
+        if(!sorted_impressions[impression.section])
+        {
+            sorted_impressions[impression.section] = [];
+        }
+        sorted_impressions[impression.section].push(impression);
+    }
+
+    var section_scores = {};
+    for (var section_name in sorted_impressions) {
+        if (sorted_impressions.hasOwnProperty(section_name)) {
+            var section = P13N.reordering.getSection(section_name);
+            var total_number_of_views = sorted_impressions[section_name].length;
+            section_scores[section_name] = total_number_of_views;
+        }
+    }
+    var sortable = [];
+    for (var score in section_scores) {
+        sortable.push([score, section_scores[score]])
+    }
+    sortable.sort(function(a, b) {return a[1] - b[1]});
+    var result = [];
+    for (var i=0;i < Math.min(sortable.length,3); i++) {
+        var score = sortable[i];
+        result.push(score[0]);
+    }
+    return result.toString();
+};
+
+P13N.reordering.Impression = function(start_time_param, length_of_stay_param, section_param){
+    var start_time = start_time_param;
+    var length_of_stay = length_of_stay_param;
+    var section = section_param;
+
+    var finish_impression = function() {
+        length_of_stay = new Date().getTime() - start_time;
+    };
+
+    var toString = function(){
+        var start_time_string = start_time.toString();
+        var length_of_stay_string = length_of_stay.toString();
+
+        if(start_time_string.length > 3)
+        {
+            start_time_string = start_time_string.substr(0, start_time_string.length - 3);
+        }
+        else
+        {
+            start_time_string = "0";
+        }
+
+        if(length_of_stay_string.length > 3)
+        {
+            length_of_stay_string = length_of_stay_string.substr(0, length_of_stay_string.length - 3);
+        }
+        else
+        {
+            length_of_stay_string = "0";
+        }
+
+        return start_time_string + ":" + length_of_stay_string + ":" + section;
+    };
+
+    return {
+        start_time:start_time,
+        length_of_stay:length_of_stay,
+        section:section,
+        finish_impression:finish_impression,
+        toString:toString
+    }
+};
+
+P13N.reordering.Impression.fromString = function(encodedImpressionString){
+    var parts = encodedImpressionString.split(":");
+    var impression = new P13N.reordering.Impression(parts[0] + "000", parts[1] + "000", parts[2]);
+    return impression;
+};
+
+P13N.reordering.start_impression = function(){
+    P13N.debug("Launching!");
+    var start_time = new Date().getTime();
+    var length_of_stay = 0;
+    var page_data = document.querySelectorAll("meta[property='article:section']");
+    var section = '';
+    var articleSection = '';
+    if(page_data && page_data.length > 0) {
+        section = document.querySelectorAll("meta[property='article:section']")[0].content;
+        P13N.debug("found section data:" + articleSection);
+    }
+
+    if(section.length > 0) {
+        P13N.reordering.current_impression = new P13N.reordering.Impression(start_time, length_of_stay, section);
+    }
+};
+
+P13N.reordering.save_impressions = function(){
+    var lastSavedUrl = (localStorage.lastSavedUrl)? localStorage.lastSavedUrl:"";
+    var lastSavedUrlTime = (localStorage.lastSavedUrlTime)? localStorage.lastSavedUrlTime:0;
+    var now = new Date().getTime();
+    if(p13nurl === lastSavedUrl && p13nurl.indexOf('mako.co.il/p13n_sat_frame.html') === -1)
+    {
+        if(now - lastSavedUrlTime < P13N.SESSION_TIME)
+        {
+            localStorage.lastSavedUrlTime = now;
+            return;
+        }
+    }
+
+    localStorage.lastSavedUrl = p13nurl;
+    localStorage.lastSavedUrlTime = now;
+
+    var impressions = (localStorage.impressions)? JSON.parse(localStorage.impressions) : [];
+
+    if(Object.prototype.toString.call(impressions) === '[object Array]')
+    {
+
+    }
+    else
+    {
+        impressions = JSON.parse(impressions);
+    }
+
+    if(impressions.length == 0)
+    {
+        impressions = P13N.reordering.get_old_impressions();
+    }
+
+    if(P13N.reordering.current_impression && P13N.reordering.current_impression.length_of_stay > -1) {
+        impressions.push(P13N.reordering.current_impression.toString());
+    }
+
+    var new_impressions = [];
+    for(var i=0; i<impressions.length; i++)
+    {
+        if(new_impressions.length > P13N.MAX_NUMBER_OF_ITEMS_TO_SAVE)
+        {
+            break;
+        }
+        var parts = impressions[i].split(":");
+        var impression_time = parseInt(parts[0]) * 1000;
+        var now = new Date().getTime();
+        if(now - impression_time <= P13N.NUMBER_OF_DAYS_TO_SAVE_DATA * P13N.DAY)
+        {
+            new_impressions.push(impressions[i]);
+        }
+    }
+    if(window.Prototype) {
+        localStorage.impressions = new_impressions.toJSON();
+    }
+    else {
+        localStorage.impressions = JSON.stringify(new_impressions);
+    }
+};
+
+P13N.reordering.get_old_impressions = function(){
+    P13N.debug("converting old style impressions");
+    var impressions = [];
+    for ( var i = 0; i < localStorage.length; i++ ) {
+        var key = localStorage.key(i);
+        var value = localStorage.getItem(key);
+
+        if(P13N.reordering.getSection(key))
+        {
+            var old_impression = JSON.parse(value);
+
+            for(var j=0; j < old_impression.points; j++)
+            {
+                var start_time_string = (old_impression.lastActivity).toString();
+                var length_of_stay_string = 60;
+                var section_string = key;
+                var impression = new P13N.reordering.Impression(start_time_string, length_of_stay_string, section_string);
+                impressions.push(impression.toString());
+            }
+        }
+    }
+    return impressions;
+};
+
+P13N.reordering.getSection = function(section_name){
+    for(var i=0; i< P13N.reordering.sections.length; i++)
+    {
+        var section = P13N.reordering.sections[i];
+        if(section.name == section_name)
+        {
+            return section;
+        }
+    }
+    return null;
+};
+
+P13N.reordering.finish_impression = function(){
+    P13N.debug("finish_impression");
+    if(P13N.reordering.current_impression && P13N.reordering.current_impression.section && P13N.reordering.current_impression.section.length > 0) {
+        P13N.reordering.current_impression.finish_impression();
+        P13N.reordering.save_impressions();
+    }
+};
+
+P13N.reordering.call_ios = function(native_function_name){
+    var iframe = document.createElement("IFRAME");
+    iframe.setAttribute("src", "js-frame:" + native_function_name);
+    document.documentElement.appendChild(iframe);
+    iframe.parentNode.removeChild(iframe);
+    iframe = null;
+};
+
+P13N.shouldRequestRating = function(){
+	var now = new Date().getTime();
+    var impressions = (localStorage.impressions)? JSON.parse(localStorage.impressions) : [];
+
+    if(Object.prototype.toString.call(impressions) === '[object Array]')
+    {
+
+    }
+    else
+    {
+        impressions = JSON.parse(impressions);
+    }
+
+    var number_of_new_impressions_per_week = 0;
+    var number_of_new_impressions_last_hour = 0;
+    for(var i=0; i<impressions.length; i++)
+    {
+        var impression_string = impressions[i];
+        var impression = P13N.reordering.Impression.fromString(impression_string);
+        if(impression.start_time > now - (7 * P13N.DAY))
+        {
+            number_of_new_impressions_per_week++;
+        }
+
+        if(impression.start_time > now - P13N.HOUR)
+        {
+            number_of_new_impressions_last_hour++;
+        }
+    }
+    if(number_of_new_impressions_per_week >= 12 && number_of_new_impressions_last_hour >= 3) {
+        return "true";
+    }
+    return "false";
+};
+
+function sendUsageData(){
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.open("POST","p13nLocalStorageData.json",true);
+    xmlhttp.setRequestHeader("Accept-Encoding", "UTF-8");
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+    xmlhttp.acceptCharset = "UTF-8";
+    var form_data = new FormData();
+
+    for ( var key in localStorage ) {
+        form_data.append(key, localStorage[key]);
+    }
+    xmlhttp.send(form_data);
+}
+
+function p13n_test_load()
+{
+    if(p13nsubdomain == "mobileappint" ||
+        p13nsubdomain == "mobileapp" ||
+        p13nsubdomain == "mobile" ||
+        p13nsubdomain == "mobileint" ||
+        p13nsubdomain == "www" ||
+        p13nsubdomain == "int" ||
+        p13nsubdomain == "tabletappint" ||
+        p13nsubdomain == "tabletapp") {
+        try {
+            var page_data = document.querySelectorAll("meta[property='article:section']");
+            if (page_data && page_data.length > 0 && document.getElementsByTagName("Body")[0]) {
+                P13N.reordering.start_impression();
+                P13N.reordering.finish_impression();
+                P13N.debug(localStorage.impressions.split(",").join(", "));
+            }
+            else {
+                if (/loaded|complete/.test(document.readyState)) {
+                    P13N.reordering.start_impression();
+                    P13N.reordering.finish_impression();
+                    P13N.debug(localStorage.impressions);
+                }
+                else {
+                    setTimeout(function () {
+                        p13n_test_load()
+                    }, 500);
+                }
+            }
+        }
+        catch (err) {
+
+        }
+    }
+}
+
+try {
+    p13n_test_load();
+}
+catch(err){
+
+}

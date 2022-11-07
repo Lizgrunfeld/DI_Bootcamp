@@ -1,0 +1,90 @@
+var 
+    oldScreenXY = -1,
+	multiscreen = {
+		enabled: true,
+		flags:{inited:false},
+		arrowActions: {
+			init: function(){				
+				banner.flags.arrowsVisible = o.arrowsEnabled && banner.screensCount > 1;
+				if(!banner.flags.arrowsVisible){
+					if(e.arrows)e.arrows.css('display','none');
+					return;
+				}
+				e.arrows
+					.css('opacity','0')
+					.css('right','-40px')
+				e.arrowPrev.on('click',function(ev){
+					if(banner.flags.dontShowArrows)return;
+					multiscreen.arrowActions.changeScreen(-1);
+					ev.preventDefault();
+				});
+				e.arrowNext.on('click', function(ev) {
+					if(banner.flags.dontShowArrows)return;
+					multiscreen.arrowActions.changeScreen(1);
+					ev.preventDefault();
+				});
+				
+			},
+			disableInactive: function() {
+				var noUp = currentScreen === 0;
+				var noDown = currentScreen === banner.screensCount - 1;
+				e.arrowPrevBlock
+					.anim({opacity: 1 - 0.666 * noUp},{queue: false})
+					.css('pointer-events' , noUp ? 'none' : 'auto');
+				e.arrowNextBlock
+					.anim({opacity:1 - 0.666 * noDown},{queue: false})
+					.css('pointer-events' , noDown ? 'none' : 'auto');
+			},
+			changeScreen: function(dir, nr){
+				nr = nr || currentScreen + dir < 0 ? 0: currentScreen + dir >= banner.screensCount ? banner.screensCount - 1 : currentScreen + dir;
+				nextOffer=nr===0?0:Number(banner.screenOffers[nr-1]);
+				multiscreen.checkScreen(nextOffer);
+				banner.flags.dontChangeOffer = true;
+			},
+			visibility: function(){
+				return (!banner.flags.arrowsVisible|| banner.flags.dontShowArrows) || multiscreen.arrowActions.show(banner.flags.mouseOnBanner);
+			},
+			show: function(ok){
+				e.arrows.anim({opacity:Number(ok),right:(-Number(!ok)*40)+'px', delay:50}, {duration:300, queue: false});
+			}
+		},
+		checkScreen: function (nr) {
+			var i = 0;
+			while (banner.screenOffers[i] <= nr) i++;
+			currentScreen = i;
+			if(banner.flags.arrowsVisible) multiscreen.arrowActions.disableInactive();
+			var currentScreenXY = -Number(o.sliderHorizontal?o.sliderScreenWidth:o.containerHeight) * i;
+			if(!multiscreen.flags.inited){
+				if(!enlarger.initEnlarger){
+					e.allOffers.css({'transition-property':'transform','transition-duration':'0.5s'})
+				}
+				multiscreen.flags.inited = true;
+			}
+			if(oldScreenXY !== currentScreenXY || (enlarger.enabled && !enlarger.flags.positionAdded)){
+				if (supportTransition){
+						if(o.sliderHorizontal){
+							if(enlarger.enabled){
+								enlarger.flags.positionAdded = true;
+								e.allOffers.css({'transition-property':'left','transition-duration':'0.5s'}).css({transformOrigin: (-currentScreenXY+o.sliderScreenWidth/2)+'px 50%', left:currentScreenXY});
+							}else{
+								e.allOffers.css({transformOrigin: (-currentScreenXY+o.sliderScreenWidth/2)+'px 50%', 'transform': 'translateX('+currentScreenXY+'px)'});
+							}
+						}else{
+							if(enlarger.enabled){
+								enlarger.flags.positionAdded = true;
+							e.allOffers.css({'transition-property':'top','transition-duration':'0.5s'}).css({transformOrigin: '50%'+(-currentScreenXY+o.containerHeight/2)+'px', top:currentScreenXY});
+							}else{
+								e.allOffers.css({transformOrigin: '50%'+(-currentScreenXY+o.containerHeight/2)+'px', 'transform': 'translateY('+currentScreenXY+'px)'});
+							}
+						}
+				}else{
+					if(o.sliderHorizontal){
+						e.allOffers.anim({left: currentScreenXY},{duration: 500});
+					}else{
+						e.allOffers.anim({top: currentScreenXY},{duration: 500});
+					}
+				}
+				oldScreenXY = currentScreenXY;
+			}
+		}
+	}

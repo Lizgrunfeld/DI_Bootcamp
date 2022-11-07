@@ -1,0 +1,12 @@
+
+                        
+var _zaVerWidget = "5c";
+(function() {
+  var elem = document.createElement("script");elem.type = "text/javascript";elem.async = true;
+  elem.src = ('https:' == document.location.protocol ? 'https://d2muzdhs7lpmo0.cloudfront.net/widget.js?id=19760883&secure&'+Math.round((new Date()).getTime()/1000/180) : 'http://d2muzdhs7lpmo0.cloudfront.net/widget.js?id=19760883&'+Math.round((new Date()).getTime()/1000/180));
+if (window.location.search.indexOf("__za") != -1 || window.location.search.indexOf("_za_") != -1)
+    elem.src += '&q='+encodeURIComponent(window.location.href);
+var ssc = document.getElementsByTagName("script")[0];ssc.parentNode.insertBefore(elem, ssc);
+})();
+                        
+                    

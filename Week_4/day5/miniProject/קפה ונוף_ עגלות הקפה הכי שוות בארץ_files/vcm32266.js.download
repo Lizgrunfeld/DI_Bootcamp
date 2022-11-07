@@ -1,0 +1,4 @@
+/**
+ * VCM-32266: The following must be called right after loading vquery.min.js
+ */
+(function(){ vQuery.noConflict(); })();
