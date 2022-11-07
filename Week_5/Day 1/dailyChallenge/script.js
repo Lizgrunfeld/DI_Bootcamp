@@ -12,10 +12,20 @@
 
 
 
-const fromjson = '{"fname": "Liz", "lname": "Dog"}';
+const fromjson = document.querySelector("form");
+fromjson.addEventListener('submit', (event)) => {
 
-const nameJSONstring = JSON.parse(fromjson);
-console.log(nameJSONstring);
-const nameString = JSON.stringify(nameJSONstring);
-console.log(nameString);
+
+event.preventDefault();
+
+const data ={};
+data["firstName"] = formElement.fname.value;
+data["lastname"] = formElement.lname.value;
+
+
+}
+
+const json = JSON.stringify(data);
+console.log(json);
+document.getElementById('words').textContent = json;
 
