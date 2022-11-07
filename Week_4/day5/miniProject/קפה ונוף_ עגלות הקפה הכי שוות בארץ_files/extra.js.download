@@ -1,6 +1,0 @@
-
-function extraInit(){
-  $('.arrow').on('click', function(){
-      multiscreen.arrowActions.changeScreen(parseInt($(this).attr('data-direction')))
-  })
-}
