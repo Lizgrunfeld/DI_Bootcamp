@@ -3,11 +3,6 @@
 // and append it on the DOM as a JSON string.
 // The output should be:
 
-// // const firstName = document.getElementById("fname");
-// // const lastName = document.getElementById("lname");
-// const nameArray = firstName+lastName;
-// const formData = JSON.stringify("#myform");
-// console.log(formData)
 
 
 
