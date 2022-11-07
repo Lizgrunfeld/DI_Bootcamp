@@ -55,7 +55,7 @@ function displayInfo (objects){
             const info = document.createElement("p");
             const img = document.createElement("img");
             const link = document.createElement('a');
-            link.setAttribute('href', ${element.data});
+            // link.setAttribute('href', ${element.data});
             img.appendChild(link);
             info.appendChild(img);
             container.appendChild(info)

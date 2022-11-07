@@ -13,6 +13,7 @@ function getData() {
 
     xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
     xhr.responseType = "json";
+    console.log(xhr)
     xhr.send();
 }
 
