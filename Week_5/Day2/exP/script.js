@@ -1,27 +1,27 @@
 
-// //PART1
-// const xhr = new XMLHttpRequest();
+//PART1
+const xhr = new XMLHttpRequest();
 
 
-// function getData() {
+function getData() {
 
-//     xhr.open("GET", "https://api.giphy.com/v1/gifs/search?q=hilarious&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My");
-//     xhr.responseType = "json";
-//     console.log(xhr);
-//     xhr.send();
+    xhr.open("GET", "https://api.giphy.com/v1/gifs/search?q=hilarious&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My");
+    xhr.responseType = "json";
+    console.log(xhr);
+    xhr.send();
 
-// }
-// // console.log(xhr);
-// getData()
+}
+// console.log(xhr);
+getData()
 
-// xhr.onload = function() {
-//     if(xhr.status === 200){
-//         console.log("Yay it works!");
-//         console.log(xhr.response.data);
-//         } else {
-//         console.log("something went wrong")
-//     }
-// }
+xhr.onload = function() {
+    if(xhr.status === 200){
+        console.log("Yay it works!");
+        console.log(xhr.response.data);
+        } else {
+        console.log("something went wrong")
+    }
+}
 
 //PART2
 

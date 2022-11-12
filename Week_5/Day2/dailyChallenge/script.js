@@ -11,59 +11,76 @@
 // Allow the user to remove all of the GIFs by clicking a DELETE ALL button.
 
 
+const formGif = document.querySelector("#form");
+formGif.addEventListener("submit", retrieveCategory);
 
-const xhr = new XMLHttpRequest();
+function retrieveCategory(event){
+    event.preventDefault();
+    const userInput = event.target.catInput.value;
+    makeRequest(userInput);
+}
 
-// function testResults (form) {
-//     const Testing = form.catInput.value;
-//     alert ("You typed: " + Testing);
-// }
-
-// testResults()
-
-const inputValue = document.getElementById("catInput").value;
-const buttonSubmit = document.querySelector("button");
-
-const combine = "https://api.giphy.com/v1/gifs/search?q=" + inputValue + "&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My&limit=1";
-console.log(combine)
-
-
-function getData() {
-
-    xhr.open("GET", combine);
+function makeRequest(input){
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `https://api.giphy.com/v1/gifs/search?q=${input}&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My&limit=1`);
     xhr.responseType = "json";
     console.log(xhr);
     xhr.send();
-}
+    
+    xhr.onload = function() {
+        if(xhr.status === 200){
+            appendGiftoPage(xhr.responseURL);
+            // displayInfo(xhr);
+            } else {
+            console.log("something went wrong")
+            }    
 
-getData()
-
-
-xhr.onload = function() {
-    if(xhr.status === 200){
-        console.log(combine);
-        displayInfo(combine);
-        } else {
-        console.log("something went wrong")
     }
 }
 
-
-function displayInfo (objects){
-    const container = document.getElementById("display")
-    objects.forEach((element) => {
-        const info = document.createElement("p");
+function appendGiftoPage(gifUrl){
+        const container = document.getElementById("display");
         const img = document.createElement("img");
-        const deleteButton = document.createElement('button').classList.add("deleteBtn");
-        const link = document.createElement('a');
-        // link.setAttribute('href', ${element.data});
-        img.appendChild(link);
-        img.appendChild(deleteButton);
-        info.appendChild(img);
-        container.appendChild(info);
-
-
-})
+        img.setAttribute ('src', gifUrl)
+        container.appendChild(img);
+        // const deleteButton = document.createElement('button').classList.add("deleteBtn");
+        // img.appendChild(deleteButton);
 }
 
-displayInfo()
+
+// const inputValue = document.getElementById("catInput").value;
+// const buttonSubmit = document.querySelector("button");
+
+// const combine = "https://api.giphy.com/v1/gifs/search?q=" + inputValue + "&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My&limit=1";
+// console.log(combine)
+
+
+// function getData() {
+
+//     xhr.open("GET", combine);
+//     xhr.responseType = "json";
+//     console.log(xhr);
+//     xhr.send();
+// }
+
+// getData()
+
+
+// function displayInfo (objects){
+//     const container = document.getElementById("display")
+//     objects.forEach((element) => {
+//         const info = document.createElement("p");
+//         const img = document.createElement("img");
+//         const deleteButton = document.createElement('button').classList.add("deleteBtn");
+//         const link = document.createElement('a');
+//         // link.setAttribute('href', ${element.data});
+//         img.appendChild(link);
+//         img.appendChild(deleteButton);
+//         info.appendChild(img);
+//         container.appendChild(info);
+
+
+// })
+// }
+
+// displayInfo()
