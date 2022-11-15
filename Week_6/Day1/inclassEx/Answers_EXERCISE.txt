@@ -42,5 +42,6 @@ Answers_EXERCISE
 -- 8. Where and when (Find the day (Sunday-Saturday)) is the light index the highest? - Use an alias for the day of the week.
 
 -- 9. Select only the info of the cities that start with an "S" (uppercase or lowercase). - Look at the DISTINCT constraint.
+"C:\Users\Elizabeth\Desktop\DI\Week_6\Day1\inclassEx\allititesWithS.csv"
 
 -- 10. Add to the table, todays information in Israel - of this very hour. (event_datetime,city,temperature,light,airquality_raw,sound,humidity,dust) -- - Use the return statement to see what you just inserted:
