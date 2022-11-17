@@ -2,7 +2,7 @@
 let cartLocal = JSON.parse(localStorage.getItem("cartLocal")) || [];
 let overallPrice = 0;
 
-// id#submit clears memory
+
 if (cartLocal.length) {
     // using the forEach method, calculate the total price of each item within our cart array
     cartLocal.forEach((element) => {
