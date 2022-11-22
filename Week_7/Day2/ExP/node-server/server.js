@@ -3,8 +3,8 @@ const http = require('http');
 const { user } = require('./data');
 
 const server = http.createServer((req, res) => {   
-if(res.status !== 200){
-    fetch(user)
+if(res.url == "/"){
+        res.send(user)
     // let section = document.getElementById("section");
     console.log(user)
 }else{
