@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+      <form action="/search/title" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" />
+        <label for="category">Category</label>
+            <select name="category" id="category">
+              <option value="Food&Drink">Food & Drink</option>
+              <option value="Holidays&Events">Holidays & Events</option>
+              <option value="Big Questions">Big Questions</option>
+              <option value="Space">Space</option>
+              <option value="Crime&Law">Crime & Law</option>
+              <option value="Travel&Tourism">Travel & Tourism</option>
+              <option value="History">History</option>
+              <option value="USStates">US States</option>
+            </select>
+        <button>Search</button>
+        </form>
+
+      <%- include('partials/posts') %>
+      <%- include('partials/footer') %>
+</body>
+</html>

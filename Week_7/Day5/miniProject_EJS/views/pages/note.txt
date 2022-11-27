@@ -1,0 +1,19 @@
+info for search.ejs
+
+
+    <!-- <form action="#">
+        <label for="category">Category</label>
+        <select name="category" id="category"> ${item.categories}
+          <option value=""> <%- `${item.categories}`%> </option>
+          <option value=""><%- `${item.categories}`%></option>
+          <option value=""><%- `${item.categories}`%></option>
+          <option value=""><%- `${item.categories}`%></option>
+          <option value=""><%- `${item.categories}`%></option>
+        </select>
+        <input type="search" id="category_search" name="category_search" />
+        <button>Search By category:</button>
+  </form> -->
+
+    <%- include('partials/header') %>
+  <%- include('partials/posts') %>
+  <%- include('partials/footer') %>
