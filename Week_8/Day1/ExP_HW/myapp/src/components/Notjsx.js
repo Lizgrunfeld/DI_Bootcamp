@@ -1,4 +1,5 @@
-const FirstComp = () => {
+
+const Notjsx = () => {
     return (
         <div>
             <h1>“I do not use JSX”</h1>
@@ -6,6 +7,4 @@ const FirstComp = () => {
     )
 }
 
-
-
-export default FirstComp
+export default Notjsx
