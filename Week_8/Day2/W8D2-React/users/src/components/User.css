@@ -1,0 +1,16 @@
+.dib {
+    display: inline-block;
+}
+.b1sb {
+    border: 10px solid black;
+}
+
+.m20{
+    margin: 20px;
+}
+.pd{
+    padding: 5px;
+}
+.tac{
+    text-align: center;
+}

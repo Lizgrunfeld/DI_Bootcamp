@@ -1,0 +1,17 @@
+
+
+
+.div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+    
+}
