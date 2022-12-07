@@ -1,11 +1,12 @@
 
+// const Search = (props) => {
+//     return(
+//         <div>
+//             <input type ="text" onChange={props.handleSearch} />
+//         </div>
+//     )
+// }
 
-const Search = (props) => {
-    return(
-        <div>
-            <input type ="text" onChange={props.handleSearch} />
-        </div>
-    )
-}
+// export default Search
 
-export default Search
+////moved to NavBar

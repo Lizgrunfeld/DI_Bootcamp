@@ -1,8 +1,12 @@
 import React from "react";
 import './App.css';
 import Gan from "./components/Gan";
-import Search from "./components/Search";
+// import Search from "./components/Search";
 import 'tachyons';
+import InputGanForm from "./components/InputGanForm";
+import Navbar from "./components/Navbar";
+
+
 
 
 class App extends React.Component {
@@ -29,24 +33,24 @@ class App extends React.Component {
   handleSearch = (e) => {
     this.setState({ text: e.target.value });
   }
+  
 
   render() {
-
-    const {gans, text} = this.state;
-
-    const filterGans = gans.filter((item) =>{
-      return item.ganname.toLowerCase().includes(text.toLowerCase());
-    });
     return (
-      <div className='tc'>
-        <Search handleSearch={this.handleSearch}/>
-        {filterGans.map((item) => {
-            return <Gan gan={item} key={item.id} />
-          })}
+      <div className=''>
+        <Navbar handleSearch={this.handleSearch} />
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Gan />
+        <br/>
+        <hr/>
+        <InputGanForm />
+        
       </div>
   );
   }
 }
 export default App;
-
-

@@ -7,7 +7,11 @@ const router = Router();
 router.get('/', controller.getGans);
 router.get('/:id', controller.getGanById);
 
-router.post('/', controller.addGan);
+router.post('/creategan', controller.addGan);
+
+// app.post("/creategan", (req, res) => {
+//     console.log(req.body);
+//   });
 
 // router.delete('/:id', controller.removeGan);
 

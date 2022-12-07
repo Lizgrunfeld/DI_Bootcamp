@@ -28,15 +28,15 @@ const addGan = (req,res) =>{
         pictures,
         owner,
         contactphone,
-        special,
-        fridayclass } = req.body;
+        special
+    } = req.body;
 
     pool.query(queries.checkGanExists, [ganname], (error, results) =>{
         if (results.rows.length) {
             res.send("Gan already exists.");
         }
         pool.query(queries.addNewGan, [ganname, loccity, locaddress, agelowmonths, agehighmonths, ratio, website,
-            pictures, owner, contactphone, special, fridayclass], (error, results)=>{
+            pictures, owner, contactphone, special], (error, results)=>{
                 if(error) throw error;
                 res.status(201).send("Gan added for Review!");
                 console.log("Gan Created")
