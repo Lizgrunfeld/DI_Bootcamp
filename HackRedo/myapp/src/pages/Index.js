@@ -7,7 +7,8 @@ const Home = () => {
     return (
       <div>
         <br/>
-        <SearchBar />
+        <SearchBar placeholder="Enter Gan Name..." handleChange={(e) => console.log(e)}/>
+        <br/>
         <GanCard />
           
       </div>

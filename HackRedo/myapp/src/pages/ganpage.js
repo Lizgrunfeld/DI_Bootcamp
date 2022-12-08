@@ -2,7 +2,7 @@
 import React from "react";
 import GanPage from "../components/GanPage";
   
-const GanPage = () => {
+const GanPage = (props) => {
   return (
     <div>
       <h1>
