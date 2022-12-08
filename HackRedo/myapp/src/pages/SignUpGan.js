@@ -1,11 +1,12 @@
 import React from 'react';
+import InputGanForm from '../components/InputGanForm';
 
 const SignUpGan = () => {
 return (
 	<div>
-	<h1>Sign Up Form</h1>
+	<InputGanForm />
 	</div>
 );
 };
 
-export default SignUpGan;
+export default SignUpGan ;

@@ -3,9 +3,12 @@ import './App.css';
 import Gan from "./components/Gan";
 // import Search from "./components/Search";
 import 'tachyons';
-import InputGanForm from "./components/InputGanForm";
 import Navbar from "./components/Navbar";
-
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from './pages';
+import Availability from './pages/availability';
+// import SearchClient from "./pages/search";
+import SignUpGan from "./pages/signupgan";
 
 
 
@@ -38,16 +41,16 @@ class App extends React.Component {
   render() {
     return (
       <div className=''>
-        <Navbar handleSearch={this.handleSearch} />
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          {/* <Route path='/search' element={<SearchClient />} /> */}
+          <Route path='/availability' element={<Availability/>} />
+          <Route path='/signupgan' element={<SignUpGan />} />
+        </Routes>
+        </Router>
         <Gan />
-        <br/>
-        <hr/>
-        <InputGanForm />
         
       </div>
   );

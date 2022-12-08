@@ -55,7 +55,7 @@ function handle(e){
 }
   return (
     <div className="inputGanform">
-      <h1>Add your Gan for Review</h1>
+      <h1>Add your Gan</h1>
       <div>
         <form onSubmit={(e)=>submitForm(e)} action="/" method="POST" className="information">
       <label htmlFor="ganname">Gan Name:</label>
@@ -175,19 +175,6 @@ function handle(e){
         <option value="vegetarian">Vegetarian</option>
         <option value="oudoor">Outdoor School</option>
         </select>
-      {/* <label htmlFor="fridayClass">Class on Friday</label>
-        <select
-            id ="fridayClass"
-            name="fridayClass"
-            value={data.fridayClass}
-            onChange={(e)=>{
-            handle(e);
-            }}
-              >
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-                </select> */}
-                {/* <button>Add Gan</button> */}
       <button onClick={InputGanForm}>Add Gan</button>
       </form>
         </div>
@@ -196,3 +183,4 @@ function handle(e){
 }
 
 export default InputGanForm;
+
