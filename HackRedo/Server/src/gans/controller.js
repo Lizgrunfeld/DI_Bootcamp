@@ -34,6 +34,7 @@ const addGan = (req,res) =>{
     pool.query(queries.checkGanExists, [ganname], (error, results) =>{
         if (results.rows.length) {
             res.send("Gan already exists.");
+            ///break
         }
         pool.query(queries.addNewGan, [ganname, loccity, locaddress, agelowmonths, agehighmonths, ratio, website,
             pictures, owner, contactphone, special], (error, results)=>{

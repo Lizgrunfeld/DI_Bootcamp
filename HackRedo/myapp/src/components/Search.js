@@ -1,14 +1,35 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+// import {useState} from "react";
+
+
+
 
 //For Home site - simple
 function SearchBar() {
+    // const [query, setQuery] = useState({
+    //     query: '',
+    //     list: []
+    // })
+
+    // const handleChange = (e) =>{
+    //     const results = gans.filter(gan => {
+    //         if(e.target.value === "") return gans
+    //         return gan.ganname.toLowerCase().includes(e.target.value.toLowerCase())
+    //     })
+    //     setState({
+    //         query: e.target.value,
+    //         list: results
+    //     })
+        
+    // }
+
     return (
       <>
       <div style={{width:'26rem', marginLeft:"auto", marginRight:10}}>
         <InputGroup className="mb-3">
-          <Form.Control
+          <Form.Control value={query} onChange={handleChange}
             placeholder="Enter City or Gan Name"
             aria-label="Enter City or Gan Name"
             aria-describedby="basic-addon2"
@@ -23,76 +44,3 @@ function SearchBar() {
   }
   
   export default SearchBar;
-
-
-
-
-
-
-// import React from 'react';
-// import Gan from './Gan';
-
-// class Search extends React.Component{
-//   constructor(){
-//     super();
-//    this.state = {
-//       gansData: [],
-//       text:'',
-//       text2:''
-//     }
-//   }
-
-   
-//   getGans = () =>{
-//         fetch('http://localhost:4000/api/gans')
-//         .then(res => res.json())
-//         .then(data =>{
-//           console.log(data);
-//           this.setState({ganssData:data})
-//         })
-//         .catch(e => {
-//           console.log(e);
-//         })
-//       }
-
-//       searchUser = (e) => {
-//         // console.log(e.target.value)
-//         this.setState({text:e.target.value})
-        
-//       }
-
-//       buttonSearch = () =>{
-//         this.setState({text2:this.state.text})
-//       }
-    
-
-//   render(){
-//     const {gansData,text,text2} = this.state;
-
-//     const filterData = gansData.filter(gan => {
-//       return gan.ganname.toLowerCase().includes(text2.toLowerCase())
-//     });
-
-//     return (
-//         <div>
-//           <div className='tc '>
-//           <input onChange={this.searchUser} type='text' />
-//           <button onClick={this.buttonSearch}>Search</button>
-//           </div>
-//             {
-//              filterData.map((gan, index)=> {
-//                return(
-//                  <Gan id={gan.id} name={gan.ganname} loccity={gan.loccity} locaddress={gan.locaddress} agelowmonths={gan.agelowmonths}
-//                  agehighmonths={gan.agehighmonths}  ratio={gan.ratio} website={gan.website} pictures={gan.pictures}  owner={gan.owner}
-//                  contactphone={gan.contactphone} special={gan.special} key={index} />
-//              )
-//           })
-//        }
-//       </div>
-//    );
-//   }
-// }
-  
-
-
-// export default Search;

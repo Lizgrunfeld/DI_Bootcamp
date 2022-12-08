@@ -22,17 +22,17 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount(){
-    fetch("http://localhost:4000/api/gans")
-    .then((res) => res.json())
-    .then((data) => {
-      this.setState({ gans: data });
-      console.log(data)
-    })
-    .catch((e) =>{
-      console.log(e);
-    });
-  }
+  // componentDidMount(){
+  //   fetch("http://localhost:4000/api/gans")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     this.setState({ gans: data });
+  //     console.log(data)
+  //   })
+  //   .catch((e) =>{
+  //     console.log(e);
+  //   });
+  // }
 
 
   handleSearch = (e) => {

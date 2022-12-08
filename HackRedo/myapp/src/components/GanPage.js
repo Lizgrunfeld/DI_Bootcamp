@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState} from 'react';
+// import axios from 'axios';
 
 
 const GanPage = () => {
     const [gans, setGans] = useState([]);
-    const fetchGans = () => {
-        axios
-            .get(`http://localhost:4000/api/gans${gans.id}`)
-            .then((res) => {
-                setGans(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
+    
+        // axios.get('http://localhost:4000/api/gans/6')
+        //     // .get(`http://localhost:4000/api/gans${gans.id}`)
+        //     .then((res) => {
+        //         setGans(res.data);
+        //         console.log(res.data)
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     });
+
 
     return (
         /////////////send over selected gan from click. id = id displayed
