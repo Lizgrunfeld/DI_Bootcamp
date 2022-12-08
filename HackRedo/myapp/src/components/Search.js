@@ -6,7 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 function SearchBar() {
     return (
       <>
-      <div style={{width:'26rem', marginLeft:"auto", marginRight:0}}>
+      <div style={{width:'26rem', marginLeft:"auto", marginRight:10}}>
         <InputGroup className="mb-3">
           <Form.Control
             placeholder="Enter City or Gan Name"

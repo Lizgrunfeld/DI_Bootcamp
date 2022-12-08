@@ -9,6 +9,9 @@ router.get('/:id', controller.getGanById);
 
 router.post('/creategan', controller.addGan);
 
+
+
+
 // router.get('/searchcity', controller.searchCity);
 
 // app.post("/creategan", (req, res) => {

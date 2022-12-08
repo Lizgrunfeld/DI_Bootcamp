@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from '../components/Search';
+import SearchBarMore from '../components/SearchMore';
 
 //ADD SEARCH MORE
 
@@ -9,7 +9,7 @@ return (
 	<div>
     <h1>ADD MORE OPTIONS HERE FOR SEARCHING</h1>
     <br />
-    <SearchBar />
+    <SearchBarMore />
 	</div>
 );
 };

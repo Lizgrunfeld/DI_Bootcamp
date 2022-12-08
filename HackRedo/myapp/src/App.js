@@ -9,6 +9,7 @@ import Home from './pages';
 import Availability from './pages/availability';
 import SearchClient from "./pages/search";
 import SignUpGan from "./pages/signupgan";
+import GanPage from "./components/GanPage";
 
 
 
@@ -50,6 +51,7 @@ class App extends React.Component {
           <Route path='/search' element={<SearchClient />} />
           <Route path='/availability' element={<Availability/>} />
           <Route path='/signupgan' element={<SignUpGan />} />
+          <Route path='/ganpage' element={<GanPage />} />
         </Routes>
         </Router>
         {/* <Gan /> */}
