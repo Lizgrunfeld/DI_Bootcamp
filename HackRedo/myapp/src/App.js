@@ -1,13 +1,13 @@
 import React from "react";
 import './App.css';
-import Gan from "./components/Gan";
+// import Gan from "./components/Gan";
 // import Search from "./components/Search";
+import Navigationbar from "./components/Navigationbar";
 import 'tachyons';
-import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages';
 import Availability from './pages/availability';
-// import SearchClient from "./pages/search";
+import SearchClient from "./pages/search";
 import SignUpGan from "./pages/signupgan";
 
 
@@ -33,6 +33,7 @@ class App extends React.Component {
     });
   }
 
+
   handleSearch = (e) => {
     this.setState({ text: e.target.value });
   }
@@ -42,15 +43,17 @@ class App extends React.Component {
     return (
       <div className=''>
         <Router>
-        <Navbar />
+        <Navigationbar />
         <Routes>
-          <Route path='/' exact element={<Home />} />
-          {/* <Route path='/search' element={<SearchClient />} /> */}
+        <Route path='/' exact element={<Home />} />
+          <Route path='/home' exact element={<Home />} />
+          <Route path='/search' element={<SearchClient />} />
           <Route path='/availability' element={<Availability/>} />
           <Route path='/signupgan' element={<SignUpGan />} />
         </Routes>
         </Router>
-        <Gan />
+        {/* <Gan /> */}
+        
         
       </div>
   );

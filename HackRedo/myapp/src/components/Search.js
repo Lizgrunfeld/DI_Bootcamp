@@ -1,3 +1,34 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+
+//For Home site - simple
+function SearchBar() {
+    return (
+      <>
+      <div style={{width:'26rem', marginLeft:"auto", marginRight:0}}>
+        <InputGroup className="mb-3">
+          <Form.Control
+            placeholder="Enter City or Gan Name"
+            aria-label="Enter City or Gan Name"
+            aria-describedby="basic-addon2"
+          />
+          <Button variant="outline-success" id="button-addon2">
+            Search
+          </Button>
+        </InputGroup>
+        </div>
+      </>
+    );
+  }
+  
+  export default SearchBar;
+
+
+
+
+
+
 // import React from 'react';
 // import Gan from './Gan';
 

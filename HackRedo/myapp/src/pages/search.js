@@ -1,12 +1,18 @@
-// import React from 'react';
-// import Search from '../components/Search';
+import React from 'react';
+import SearchBar from '../components/Search';
 
-// const SearchClient = () => {
-// return (
-// 	<div>
-// 	<Search />
-// 	</div>
-// );
-// };
+//ADD SEARCH MORE
 
-// export default SearchClient ;
+
+const SearchClient = () => {
+return (
+	<div>
+    <h1>ADD MORE OPTIONS HERE FOR SEARCHING</h1>
+    <br />
+    <SearchBar />
+	</div>
+);
+};
+
+export default SearchClient ;
+

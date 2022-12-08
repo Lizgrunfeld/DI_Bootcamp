@@ -1,11 +1,15 @@
 
 import React from "react";
-import Gan from "../components/Gan";
+import GanCard from "../components/GanCard";
+import SearchBar from "../components/Search";
 
 const Home = () => {
     return (
       <div>
-        <Gan />
+        <br/>
+        <SearchBar />
+        <GanCard />
+          
       </div>
     );
   };

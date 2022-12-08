@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import 'tachyons';
 
 
 const Gan = () => {
@@ -41,5 +40,5 @@ const Gan = () => {
 
 
     
-export default Gan
+export default Gan;
 
